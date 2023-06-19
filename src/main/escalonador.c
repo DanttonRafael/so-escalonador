@@ -39,6 +39,18 @@ int memory[MEMORY_SIZE];
 // Função para simular a execução de um processo
 void execute_process(Process *process) {
     printf("Executando processo %d com prioridade %d, %d segundos de CPU e %dMB de memória.\n", process->id, process->priority, process->cpu_time, process->memory);
+    
+    if(process->disk == 0){
+        printf("sem necessidade de recursos de E/S\n");
+    } else {
+        printf("necessita de %d unidades de disco\n", process->disk);
+    }
+
+    if(process->io_start == 0){
+        printf("sem I/O\n");
+    } else {
+        printf("necessita de %d segundos de I/O a partir do segundo %d\n", process->io_duration, process->io_start);
+    }
 }
 
 // Função para liberar a memória alocada por um processo
